@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`dark:bg-[#0E0C22] dark:text-white ` + inter.className}>
-        <div className="container mx-auto">
+        <div className="container flex flex-col min-h-screen mx-auto">
           <Navbar />
           {children}
           <Footer />
