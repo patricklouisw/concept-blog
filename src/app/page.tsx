@@ -7,14 +7,14 @@ const Home = () => {
     <div className="flex flex-col text-center lg:flex-row lg:text-start gap-24">
       {/* Text */}
       <div className="flex flex-col gap-12 flex-1">
-        <div className="lg:text-8xl text-6xl">Creative Thoughts Agency.</div>
+        <h1 className="lg:text-8xl text-6xl">Creative Thoughts Agency.</h1>
 
-        <div className="text-md lg:text-xl">
+        <p className="text-md lg:text-xl">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae,
           blanditiis. Numquam a voluptas iure consequatur eum reiciendis ipsam
           error doloribus in voluptatibus. Doloremque eum adipisci dolores ex?
           Cumque, officiis esse?
-        </div>
+        </p>
 
         <div className="flex gap-5 justify-center lg:justify-start">
           <Link
