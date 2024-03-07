@@ -44,13 +44,7 @@ const Home = () => {
 
       {/* Image */}
       <div className="flex flex-1 relative min-h-72">
-        <Image
-          src="/hero.gif"
-          alt="Home pic"
-          fill
-          // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-contain"
-        />
+        <Image src="/hero.gif" alt="Home pic" fill className="object-contain" />
       </div>
     </div>
   );

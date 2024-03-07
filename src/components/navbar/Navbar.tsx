@@ -5,7 +5,7 @@ import Links from "./Links";
 const Navbar = () => {
   return (
     <div className="flex justify-between items-center h-24">
-      <div className="text-3xl font-bold tracking-wider">Macaw</div>
+      <div className=" flex-1 text-3xl font-bold tracking-wider">Macaw</div>
       <Links />
     </div>
   );
