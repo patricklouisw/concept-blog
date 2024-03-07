@@ -18,8 +18,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`dark:bg-[#0E0C22] dark:text-white ` + inter.className}>
-        <div className="container flex flex-col min-h-screen mx-auto">
+      <body className={`dark:bg-[#0A0A20] dark:text-white ` + inter.className}>
+        <div className="container px-12 flex flex-col justify-between min-h-screen m-auto">
           <Navbar />
           {children}
           <Footer />
