@@ -7,6 +7,7 @@ export const dummy_data = [
       date_published: "Jan 4 2024",
       picture:
         "https://images.pexels.com/photos/1658967/pexels-photo-1658967.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      author: "Sam",
     },
     {
       id: 2,
@@ -16,6 +17,8 @@ export const dummy_data = [
       date_published: "Jan 4 2024",
       picture:
         "https://images.pexels.com/photos/1658967/pexels-photo-1658967.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      author: "Sam",
+
     },
     {
       id: 3,
@@ -25,6 +28,8 @@ export const dummy_data = [
       date_published: "Jan 4 2024",
       picture:
         "https://images.pexels.com/photos/1658967/pexels-photo-1658967.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      author: "Sam",
+
     },
     {
       id: 4,
@@ -34,6 +39,8 @@ export const dummy_data = [
       date_published: "Jan 4 2024",
       picture:
         "https://images.pexels.com/photos/1658967/pexels-photo-1658967.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      author: "Sam",
+
     },
     {
       id: 5,
@@ -43,5 +50,7 @@ export const dummy_data = [
       date_published: "Jan 4 2024",
       picture:
         "https://images.pexels.com/photos/1658967/pexels-photo-1658967.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      author: "Sam",
+
     },
   ];
