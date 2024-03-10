@@ -18,7 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`dark:bg-[#0A0A20] dark:text-white ` + inter.className}>
+      <body
+        className={`dark:bg-[#0A0A20] dark:text-white ` + inter.className}
+        suppressHydrationWarning
+      >
         <div className="container px-12 flex flex-col justify-between min-h-screen m-auto">
           <Navbar />
           {children}

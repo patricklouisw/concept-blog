@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { dummy_data } from "../dummy_data";
 import { usePathname } from "next/navigation";
+import { connectToDb } from "@/lib/utils";
 
 type BlogData = {
   id: number;
@@ -14,16 +15,21 @@ type BlogData = {
   author: string;
 };
 
-const Blog = () => {
-  const path_list = usePathname().split("/");
-  const id = parseInt(path_list[path_list.length - 1]);
+const fetchData = (isDummy: Boolean, slug: string) => {
+  if (isDummy) {
+    return dummy_data.filter((blog) => blog.id == parseInt(slug))[0];
+  }
 
-  const blog_data: BlogData = dummy_data.filter((blog) => blog.id == id)[0];
-  console.log(blog_data);
+  connectToDb();
+  return dummy_data.filter((blog) => blog.id == parseInt(slug))[0];
+};
 
+const Blog = ({ params }: { params: { slug: string } }) => {
+  const { slug } = params;
+
+  const blog_data: BlogData | null = fetchData(false, slug);
   return (
     <div className="flex flex-row gap-12 mt-10">
-      {/* Image Container */}
       <div className="relative w-1/3 h-screen">
         <Image
           src={blog_data.picture}
@@ -33,7 +39,6 @@ const Blog = () => {
         />
       </div>
 
-      {/* Text Container */}
       <div className="w-2/3 flex flex-col gap-10">
         <div>
           <Link href="/blogs" className="p-2 rounded bg-gray-500">
