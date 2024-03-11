@@ -1,29 +1,25 @@
-import mongoose, { Promise } from "mongoose";
+import mongoose, { ConnectionStates, Promise } from "mongoose";
 import { Mongoose } from 'mongoose';
 
-const connection = {
-    isConnected: Promise || null
+type Connection = {
+  isConnected: ConnectionStates | null
+}
+
+const connection:Connection = {
+    isConnected: null
 }
 
 export const connectToDb = async () => {
-    try {
-        if (connection.isConnected){
-            console.log(typeof connection.isConnected)
-            console.log("using existing connection")
-            return;
-        }
+  try {
+    if(connection.isConnected) {
+      return;
+    }
 
-        mongoose.connection.on('connected', () => console.log('connected'));
-        mongoose.connection.on('open', () => console.log('open'));
-        mongoose.connection.on('disconnected', () => console.log('disconnected'));
-        mongoose.connection.on('reconnected', () => console.log('reconnected'));
-        mongoose.connection.on('disconnecting', () => console.log('disconnecting'));
-        mongoose.connection.on('close', () => console.log('close'));
-
-        const db = await mongoose.connect(process.env.MONGODB_SECRET!);
-        connection.isConnected = db
-      } catch (error) {
-        console.log(error)
-        throw new Error("Error connecting to Db")
-      }
-}
+    const db = await mongoose.connect(process.env.MONGODB_SECRET!);
+    connection.isConnected = db.connections[0].readyState;
+    return
+  } catch (error) {
+    console.log(error);
+    throw new Error("Error: can't connect to db");
+  }
+};
