@@ -1,39 +1,41 @@
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
+import React, { cache } from "react";
 import { dummy_data } from "./dummy_data";
+import Postcard from "@/components/postcard/Postcard";
 
-const Blogs = () => {
+// type Post = {
+//   id: string;
+//   title: string;
+//   content: string;
+//   date_published: string;
+//   picture: string;
+//   author: string;
+// };
+
+const getData = async () => {
+  // Refresh Data every 1 hour
+  const res = await fetch("http://localhost:3000/api/blogs", {
+    cache: "no-cache",
+  });
+
+  if (!res.ok) {
+    throw new Error("Something went wrong");
+  }
+
+  return res.json();
+};
+
+const Blogs = async () => {
+  // FETCH DATA WITH AN API
+  let posts = await getData();
+
+  // if (posts.length == 0) {
+  //   posts = dummy_data;
+  // }
+
   return (
     <div className="grid grid-cols-3 gap-5">
-      {dummy_data.map((blog) => (
-        <div className="flex flex-col gap-5 mb-5" key={blog.id}>
-          {/* Image Container */}
-          <div className="flex">
-            <div className="relative w-[90%] h-[400px]">
-              <Image
-                src={blog.picture}
-                alt="blog pic"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <span className="-rotate-90 text-xs m-auto w-[100px] h-[50px] italic tracking-widest">
-              {blog.date_published}
-            </span>
-          </div>
-
-          {/* Text Container */}
-          <div className="flex flex-col gap-2">
-            <h2 className="w-[90%] text-2xl mb-5 capitalize">{blog.title}</h2>
-            <p className="w-[90%] text-slate-500 text-base mb-5 line-clamp-2">
-              {blog.content}
-            </p>
-            <Link href={`/blogs/${blog.id}`} className="underline uppercase">
-              Read More
-            </Link>
-          </div>
-        </div>
+      {posts.map((post: any) => (
+        <Postcard key={post._id} post={post} />
       ))}
     </div>
   );
